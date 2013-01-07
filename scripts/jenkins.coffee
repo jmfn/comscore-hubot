@@ -14,11 +14,20 @@ module.exports = (robot) ->
         msg.send url
 
   # build successes
-  # robot.hear /"([^"]+)"\:\ssuccess/i, (msg) ->
-  # sender = msg.message.user.name.toLowerCase()
-  #  if sender == "jenkins"
-  #    imageMe msg, msg.match[1], (url) ->
-  #      msg.send url        
+  robot.hear /"([^"]+)"\:\ssuccess/i, (msg) ->
+    sender = msg.message.user.name.toLowerCase()
+    return if sender != "jenkins"
+
+    rand = Math.random()
+
+    if rand < .1
+      msg.send "hehe, another robot said something"
+    else if rand < .5
+      words = msg.match[1].split " "
+      foo = words[0..1].join(' ')   # grab first 2 words
+     
+      imageMe msg, foo, (url) ->
+        msg.send url 
 
 imageMe = (msg, query, animated, faces, cb) ->
   cb = animated if typeof animated == 'function'
