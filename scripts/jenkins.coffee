@@ -9,14 +9,14 @@ module.exports = (robot) ->
   # build failures
   robot.hear /\:\sfailure/i, (msg) ->
     sender = msg.message.user.name.toLowerCase()
-    if sender == "shell"
+    if sender == "jenkins"
       imageMe msg, "fail", (url) ->
         msg.send url
 
   # build successes
   # robot.hear /"([^"]+)"\:\ssuccess/i, (msg) ->
   # sender = msg.message.user.name.toLowerCase()
-  #  if sender == "shell"
+  #  if sender == "jenkins"
   #    imageMe msg, msg.match[1], (url) ->
   #      msg.send url        
 
