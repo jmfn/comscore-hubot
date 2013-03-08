@@ -10,7 +10,7 @@ module.exports = (robot) ->
   robot.hear /\:\sfailure/i, (msg) ->
     sender = msg.message.user.name.toLowerCase()
     if sender == "jenkins"
-      imageMe msg, "fail", (url) ->
+      imageMe msg, "site:failblog.cheezburger.com fail", (url) ->
         msg.send url
 
   # build successes
